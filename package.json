@@ -1,0 +1,17 @@
+{
+  "name": "jsgame",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "dev": "parcel ./src/public/index.html",
+    "build": "parcel build ./src/public/index.html"
+  },
+  "alias": {
+    "src": "./src",
+    "game_modules": "./src/game_modules"
+  },
+  "keywords": [],
+  "author": "Maksim Konkov",
+  "license": "ISC"
+}

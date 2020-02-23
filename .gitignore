@@ -1,0 +1,4 @@
+/dist
+/trash
+.cache
+package-lock.json
