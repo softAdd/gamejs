@@ -1,16 +1,18 @@
 export class Display {
-    constructor(width, height, rootElement, canvasClassName) {
+    constructor(rootElement, canvasClassName, width, height) {
         this.width = width
         this.height = height
-        this.canvas = this.createCanvas(rootElement, canvasClassName)
+        this.canvas = this.createCanvas(rootElement, canvasClassName, width, height)
         this.context = this.canvas.getContext('2d')
-        this.context.canvas.width = width
-        this.context.canvas.height = height
+        this.images = {}
+        this.isImagesLoaded = false
     }
 
-    createCanvas(rootElement, canvasClassName) {
+    createCanvas(rootElement, canvasClassName, width, height) {
         const canvas = document.createElement('canvas')
         canvas.className = canvasClassName
+        canvas.width = width
+        canvas.height = height
         rootElement.appendChild(canvas)
 
         return canvas

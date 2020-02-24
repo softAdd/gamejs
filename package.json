@@ -13,5 +13,8 @@
   },
   "keywords": [],
   "author": "Maksim Konkov",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "parcel-plugin-clean-dist": "0.0.6"
+  }
 }
