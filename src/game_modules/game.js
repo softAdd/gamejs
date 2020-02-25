@@ -1,8 +1,8 @@
-import { Display } from 'game_modules/display'
+import { Screen } from 'game_modules/screen'
 
 export class Game {
     constructor(rootElement, canvasClassName, width = 640, height = 640) {
-        this.display = new Display(rootElement, canvasClassName, width, height)
+        this.screen = new Screen(rootElement, canvasClassName, width, height)
     }
 
     frame(timestamp) {

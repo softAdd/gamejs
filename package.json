@@ -11,10 +11,14 @@
     "src": "./src",
     "game_modules": "./src/game_modules"
   },
+  "staticFiles": {
+    "staticPath": ["./src/public"] 
+  },
   "keywords": [],
   "author": "Maksim Konkov",
   "license": "ISC",
   "devDependencies": {
-    "parcel-plugin-clean-dist": "0.0.6"
+    "parcel-plugin-clean-dist": "0.0.6",
+    "parcel-plugin-static-files-copy": "^2.3.1"
   }
 }

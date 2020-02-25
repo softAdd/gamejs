@@ -1,4 +1,4 @@
-export class Display {
+export class Screen {
     constructor(rootElement, canvasClassName, width, height) {
         this.width = width
         this.height = height
@@ -18,8 +18,7 @@ export class Display {
         return canvas
     }
 
-    fill(color) {
-        this.context.fillStyle = color
-        this.context.fillRect(0, 0, this.width, this.height)
+    drawImage(image, x, y) {
+        this.context.drawImage(image, x, y)
     }
 }
