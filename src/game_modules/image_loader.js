@@ -1,23 +1,23 @@
 export class ImageLoader {
-    constructor(imageFiles) {
-        this.imageFiles = imageFiles;
-        this.images = {};
-    }
-
-    load() {
-        const promises = [];
-        for (let name in this.imageFiles) {
-            promises.push(this.loadImage(name,this.imageFiles[name]));
-        }
-        return Promise.all(promises);
-    }
-
-    loadImage(name, src) {
-        return new Promise((resolve) => {
-            const image = new Image();
-            this.images[name] = image;
-            image.onload = () => resolve(name);
-            image.src = src;
-        });
+    /***
+     * @param {string} src Source of the image
+     * @param {function} callback Called after the image is loaded
+     */
+    loadImage(src, callback) {
+        return new Promise(
+            (resolve, reject) => {
+                let image = new Image()
+                image.src = src
+                image.onload = () => {
+                    resolve(image)
+                    callback()
+                }
+                image.onerror = () => {
+                    reject(Error(`Error while loading ${src}`))
+                }
+            }
+        )
     }
 }
+
+export default new ImageLoader()

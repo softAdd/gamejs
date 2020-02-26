@@ -9,7 +9,8 @@
   },
   "alias": {
     "src": "./src",
-    "game_modules": "./src/game_modules"
+    "game_modules": "./src/game_modules",
+    "scenes": "./src/game_modules/scenes"
   },
   "staticFiles": {
     "staticPath": ["./src/public"] 
