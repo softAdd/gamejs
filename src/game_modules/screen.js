@@ -4,8 +4,6 @@ export class Screen {
         this.height = height
         this.canvas = this.createCanvas(rootElement, canvasClassName, width, height)
         this.context = this.canvas.getContext('2d')
-        this.images = {}
-        this.isImagesLoaded = false
     }
 
     createCanvas(rootElement, canvasClassName, width, height) {
@@ -20,5 +18,10 @@ export class Screen {
 
     drawImage(image, x, y) {
         this.context.drawImage(image, x, y)
+    }
+
+    drawSprite(sprite) {
+        console.log(sprite)
+        // this.context.drawImage({ ...sprite })
     }
 }

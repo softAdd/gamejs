@@ -1,6 +1,6 @@
 import { Scene } from 'game_modules/scene'
 
-export class Menu extends Scene {
+export class Loading extends Scene {
     constructor(game) {
         super(game)
     }

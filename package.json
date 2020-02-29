@@ -10,7 +10,8 @@
   "alias": {
     "src": "./src",
     "game_modules": "./src/game_modules",
-    "scenes": "./src/game_modules/scenes"
+    "scenes": "./src/game_modules/scenes",
+    "loaders": "./src/game_modules/loaders"
   },
   "staticFiles": {
     "staticPath": ["./src/public"] 
