@@ -20,8 +20,27 @@ export class Screen {
         this.context.drawImage(image, x, y)
     }
 
-    drawSprite(sprite) {
-        console.log(sprite)
-        // this.context.drawImage({ ...sprite })
+    drawSprite({
+        image,
+        imageSpriteX,
+        imageSpriteY,
+        spriteWidth,
+        spriteHeight,
+        canvasSpriteX,
+        canvasSpriteY,
+        canvasImageWidth,
+        canvasImageHeight
+    }) {
+        this.context.drawImage(
+            image,
+            imageSpriteX,
+            imageSpriteY,
+            spriteWidth,
+            spriteHeight,
+            canvasSpriteX,
+            canvasSpriteY,
+            canvasImageWidth,
+            canvasImageHeight
+        )
     }
 }

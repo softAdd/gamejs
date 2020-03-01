@@ -2,46 +2,45 @@ import { Sprite } from './sprite'
 
 export class SpriteSheet {
     constructor({
-        spriteSheet,
-        spriteSheetWidth,
-        spriteSheetHeight,
-        singleSpriteWidth = 64,
-        singleSpriteHeight = 64
+        image,
+        imageWidth,
+        imageHeight,
+        spriteWidth,
+        spriteHeight
     }) {
-        this.spriteSheet = spriteSheet
-        this.spriteSheetWidth = spriteSheetWidth
-        this.spriteSheetHeight = spriteSheetHeight
-        this.singleSpriteWidth = singleSpriteWidth
-        this.singleSpriteHeight = singleSpriteHeight
+        this.image = image
+        this.imageWidth = imageWidth
+        this.imageHeight = imageHeight
+        this.spriteWidth = spriteWidth
+        this.spriteHeight = spriteHeight
     }
 
-    getSpritePositionX(index) {
-        if (index === 0) {
-            return 0
-        }
-        const widthSpriteCount = this.spriteSheetWidth / this.spriteSheetHeight
-        const sourceX = (index - 1) % widthSpriteCount * this.singleSpriteWidth
-        
-        return sourceX
+    getSpriteX(index) {
+        const spriteCountInWidth = this.imageWidth / this.spriteWidth
+        const spriteNumberInLine = index % spriteCountInWidth
+        const spriteX = spriteNumberInLine * this.spriteWidth
+
+        return spriteX
     }
 
-    getSpritePositionY(index) {
-        if (index === 0) {
-            return 0
-        }
-        const heightSpriteCount = this.spriteSheetHeight / this.singleSpriteHeight
-        const sourceY = (index - 1) % heightSpriteCount * this.singleSpriteHeight
+    getSpriteY(index) {
+        const spriteCountInWidth = this.imageWidth / this.spriteWidth
+        const spriteY = Math.trunc(index / spriteCountInWidth) * this.spriteHeight
 
-        return sourceY
+        return spriteY
     }
 
-    getSprite(index) {
+    getSprite(index, canvasSpriteX = 0, canvasSpriteY = 0, widthScale = 1, heightScale = 1) {
         return new Sprite({
-            image: this.spriteSheet,
-            sourceX: this.getSpritePositionX(index),
-            sourceY: this.getSpritePositionY(index),
-            width: this.singleSpriteWidth,
-            height: this.singleSpriteHeight
+            image: this.image,
+            imageSpriteX: this.getSpriteX(index),
+            imageSpriteY: this.getSpriteY(index),
+            spriteWidth: this.spriteWidth,
+            spriteHeight: this.spriteHeight,
+            canvasSpriteX,
+            canvasSpriteY,
+            canvasImageWidth: this.spriteWidth * widthScale,
+            canvasImageHeight: this.spriteHeight * heightScale
         })
     }
 }

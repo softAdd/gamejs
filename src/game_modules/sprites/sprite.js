@@ -1,22 +1,29 @@
 export class Sprite {
     constructor({
         image,
-        sourceX,
-        sourceY,
-        width = 64,
-        height = 64
+        imageSpriteX,
+        imageSpriteY,
+        spriteWidth,
+        spriteHeight,
+        canvasSpriteX = spriteX,
+        canvasSpriteY = spriteY,
+        canvasImageWidth = spriteWidth,
+        canvasImageHeight = spriteHeight
     }) {
         this.image = image
-        this.sourceX = sourceX
-        this.sourceY = sourceY
-        this.width = width
-        this.height = height
-        this.x = 0
-        this.y = 0
+        this.imageSpriteX = imageSpriteX
+        this.imageSpriteY = imageSpriteY
+        this.spriteWidth = spriteWidth
+        this.spriteHeight = spriteHeight
+        this.canvasSpriteX = canvasSpriteX
+        this.canvasSpriteY = canvasSpriteY
+        this.canvasImageWidth = canvasImageWidth
+        this.canvasImageHeight = canvasImageHeight
+
     }
 
-    setXY(x, y) {
-        this.x = x
-        this.y = y
+    moveSprite(x, y) {
+        this.canvasSpriteX = x
+        this.canvasSpriteY = y
     }
 }
