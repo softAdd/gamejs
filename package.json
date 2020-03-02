@@ -4,7 +4,7 @@
   "description": "",
   "main": "main.js",
   "scripts": {
-    "dev": "parcel ./src/public/index.html",
+    "dev": "parcel serve ./src/public/index.html && parcel watch ./src/public/index.html",
     "build": "parcel build ./src/public/index.html"
   },
   "alias": {
@@ -14,13 +14,20 @@
     "loaders": "./src/game_modules/loaders"
   },
   "staticFiles": {
-    "staticPath": ["./src/public"] 
+    "staticPath": [
+      "./src/public"
+    ]
   },
   "keywords": [],
   "author": "Maksim Konkov",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.8.6",
+    "@babel/preset-env": "^7.8.6",
     "parcel-plugin-clean-dist": "0.0.6",
     "parcel-plugin-static-files-copy": "^2.3.1"
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0"
   }
 }

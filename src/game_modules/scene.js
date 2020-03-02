@@ -1,10 +1,7 @@
-import imageLoader from 'loaders/image-loader'
-
 export class Scene {
     constructor(game) {
         this.game = game
         this.screen = this.game.screen
-        this.imageLoader = imageLoader
         this.status = this.constructor.LOADING
     }
     

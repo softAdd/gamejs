@@ -1,3 +1,5 @@
+import 'babel-polyfill'
+
 import { Game } from 'game_modules/game'
 import { SpriteSheet } from 'game_modules/sprites/sprite-sheet'
 
@@ -15,7 +17,7 @@ window.onload = () => {
             spriteWidth: 32,
             spriteHeight: 32
         })
-        const sprite = spriteSheet.getSprite(6, 20, 20, 1.2, 1.2)
+        const sprite = spriteSheet.getSprite(6, 100, 100, 1.2, 1.2)
         game.screen.drawSprite(sprite)
     }
 }
