@@ -16,6 +16,20 @@ export class Screen {
         return canvas
     }
 
+    createTileMap(mapData, tileset) {
+        let mapCanvas = document.createElement('canvas')
+        mapCanvas.width = mapData.width * mapData.tileWidth
+        mapCanvas.height = mapData.height * mapData.tileHeight
+
+        const mapContext = mapCanvas.getContext('2d')
+        mapData.layer.forEach(tile => {
+            const image = tileset[tile.imageName]
+            mapContext.drawImage(image, tile.x, tile.y)
+        })
+
+        return mapCanvas
+    }
+
     drawImage(image, x, y) {
         this.context.drawImage(image, x, y)
     }
