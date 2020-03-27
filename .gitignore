@@ -1,5 +1,5 @@
 /dist
 /node_modules
-/trash
+/old
 .cache
 package-lock.json

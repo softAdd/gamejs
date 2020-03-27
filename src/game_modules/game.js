@@ -1,33 +1,21 @@
-import { Screen } from './screen'
-import { Scene } from './scene'
-import { KeyboardState } from './keyboard-state'
-/* <--- scenes ---> */
-import { Loading } from 'scenes/loading'
-import { Menu } from 'scenes/menu'
-import { GlobalMap } from 'scenes/global-map'
+import * as PIXI from 'pixi.js'
 
-export class Game {
-    constructor(rootElement, canvasClassName, width = 640, height = 640) {
-        this.screen = new Screen(rootElement, canvasClassName, width, height)
+class Game {
+  constructor() {
+    this.app = new PIXI.Application(
+      {
+        width: 800,
+        height: 600,
+        backgroundColor: 0xAAAAAA
+      }
+    )
+  }
 
-        this.scenes = {
-            loading: new Loading(this),
-            menu: new Menu(this),
-            globalMap: new GlobalMap(this)
-        }
-        this.currentScene = this.scenes.globalMap
-
-        this.keyboardState = new KeyboardState()
-    }
-
-    frame(timestamp) {
-        if (this.currentScene.status !== Scene.WORKING) {
-            this.currentScene.init()
-        }
-        requestAnimationFrame(timestamp => this.frame(timestamp))
-    }
-
-    run() {
-        requestAnimationFrame(timestamp => this.frame(timestamp))
-    }
+  create() {
+    document.body.appendChild(this.app.view)
+  }
 }
+
+const game = new Game()
+export const { app } = game
+export default game

@@ -2,7 +2,7 @@
   "name": "jsgame",
   "version": "1.0.0",
   "description": "",
-  "main": "main.js",
+  "main": "index.js",
   "scripts": {
     "dev": "parcel serve ./src/public/index.html && parcel watch ./src/public/index.html",
     "build": "parcel build ./src/public/index.html"
@@ -28,6 +28,7 @@
     "parcel-plugin-static-files-copy": "^2.3.1"
   },
   "dependencies": {
-    "babel-polyfill": "^6.26.0"
+    "babel-polyfill": "^6.26.0",
+    "pixi.js": "^5.2.1"
   }
 }
