@@ -1,0 +1,8 @@
+{
+  "compilerOptions": {
+    "baseUrl": "./src",
+    "paths": {
+      "game_modules": ["./src/game_modules"]
+    }
+  }
+}
