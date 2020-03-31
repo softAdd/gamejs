@@ -1,45 +1,42 @@
 import * as PIXI from 'pixi.js'
-import menuScreen from 'game_modules/screens/menu-screen'
-import mainScreen from 'game_modules/screens/main-screen'
 
 class Game {
-  constructor() {
+  constructor(gameContainer) {
+    this.gameContainer = gameContainer
     this.app = new PIXI.Application(
       {
-        width: 800,
-        height: 600,
+        width: gameContainer.offsetWidth,
+        height: gameContainer.clientHeight,
+        resizeTo: gameContainer,
         backgroundColor: 0xAAAAAA
       }
     )
-    this.display = {
-      'menu': menuScreen,
-      'main': mainScreen
-    }
+    this.create()
   }
 
-  setScreen(name) {
-    Object.keys(this.display).forEach(screenName => {
-      const screen = this.display[screenName]
+  // setScreen(name) {
+  //   Object.keys(this.display).forEach(screenName => {
+  //     const screen = this.display[screenName]
 
-      if (screenName === name) {
-        screen.visible = true
-        return
-      }
+  //     if (screenName === name) {
+  //       screen.visible = true
+  //       return
+  //     }
 
-      screen.visible = false
-    })
-  }
+  //     screen.visible = false
+  //   })
+  // }
 
   gameLoop(timestamp) {
     // console.log(timestamp)
   }
 
   create() {
-    document.body.appendChild(this.app.view)
+    this.gameContainer.appendChild(this.app.view)
 
-    Object.keys(this.display).forEach(screenName => {
-      this.app.stage.addChild(this.display[screenName])
-    })
+    // Object.keys(this.display).forEach(screenName => {
+    //   this.app.stage.addChild(this.display[screenName])
+    // })
   }
 
   run() {
@@ -51,6 +48,4 @@ class Game {
   }
 }
 
-const game = new Game()
-export const { app } = game
-export default game
+export default Game

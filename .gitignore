@@ -3,3 +3,4 @@
 /old
 .cache
 package-lock.json
+.prettierrc.json

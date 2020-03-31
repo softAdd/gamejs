@@ -5,11 +5,11 @@ class GlobalController {
     window.addEventListener('keyup', this.unpressKey)
   }
 
-  pressKey() {
+  pressKey(evt) {
     this.keyMap[evt.keyCode] = true
   }
 
-  unpressKey() {
+  unpressKey(evt) {
     this.keyMap[evt.keyCode] = false
   }
 
