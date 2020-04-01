@@ -1,4 +1,5 @@
 import * as PIXI from 'pixi.js'
+import MainScreen from 'game_modules/screens/main-screen'
 
 class Game {
   constructor(gameContainer) {
@@ -8,35 +9,26 @@ class Game {
         width: gameContainer.offsetWidth,
         height: gameContainer.clientHeight,
         resizeTo: gameContainer,
-        backgroundColor: 0xAAAAAA
+        transparent: true
       }
     )
+    this.screens = {
+      main: new MainScreen('main', true)
+    }
     this.create()
   }
 
-  // setScreen(name) {
-  //   Object.keys(this.display).forEach(screenName => {
-  //     const screen = this.display[screenName]
-
-  //     if (screenName === name) {
-  //       screen.visible = true
-  //       return
-  //     }
-
-  //     screen.visible = false
-  //   })
-  // }
-
-  gameLoop(timestamp) {
+  gameLoop() {
     // console.log(timestamp)
   }
 
   create() {
     this.gameContainer.appendChild(this.app.view)
-
-    // Object.keys(this.display).forEach(screenName => {
-    //   this.app.stage.addChild(this.display[screenName])
-    // })
+    // make screens available
+    Object.keys(this.screens).forEach(screenName => {
+      const screenContainer = this.screens[screenName].container
+      this.app.stage.addChild(screenContainer)
+    })
   }
 
   run() {

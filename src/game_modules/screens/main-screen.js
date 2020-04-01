@@ -1,37 +1,52 @@
 import * as PIXI from 'pixi.js'
+import Player from 'game_modules/units/player'
 
-class MainScreen extends Screen {
-  constructor() {
-    this.screen = new PIXI.Container()
-    this.screen.visible = false
+class MainScreen {
+  constructor(name, isVisible = false) {
+    this.container = new PIXI.Container()
+    this.configContainer(name, isVisible)
     this.loader = new PIXI.Loader()
-    this.sprites = {}
+    this.sprites = {
+      'player': new Player('assets/sprites/32barrel.png', 10, 10)
+    }
+    if (isVisible) {
+      this.init()
+    }
+  }
+
+  configContainer(name, isVisible) {
+    this.container.name = name
+    this.container.visible = isVisible
+    this.container.interactive = true
   }
 
   createLoadingQueue() {
     Object.keys(this.sprites).forEach(spriteName => {
-      const sprite = sprites[spriteName]
-      this.loader.add(spriteName, sprite.path)
+      const gameObject = this.sprites[spriteName]
+
+      this.loader.add(spriteName, gameObject.spritePath)
     })
   }
 
   doneLoadingResources() {
     Object.keys(this.loader.resources).forEach(resourseName => {
-      const sourceSprite = sprites[resourseName]
-      const loadedSprite = new PIXI.Sprite.from(app.loader.resources[resourseName].texture)
-      
-      loadedSprite.x = sourceSprite.x
-      loadedSprite.y = sourceSprite.y
-      loadedSprite.anchor.set(sourceSprite.anchor)
+      const gameObject = this.sprites[resourseName]
+      const currentTexture = this.loader.resources[resourseName].texture
 
-      this.screen.addChild(loadedSprite)
+      gameObject.create(currentTexture)
+
+      this.container.addChild(gameObject.sprite)
     })
-    const tree = new PIXI.Sprite.from(app.loader.resources.tree.texture)
+    // const redRect = new PIXI.Graphics()
+    // redRect.beginFill(0xFF0000)
+    // redRect.drawRect(0, 0, 1000, 1000)
+    // this.container.addChild(redRect)
   }
 
   init() {
     this.createLoadingQueue()
-    this.loader.onComplete.add(this.doneLoadingResources)
+    this.loader.load()
+    this.loader.onComplete.add(this.doneLoadingResources.bind(this))
   }
 }
 

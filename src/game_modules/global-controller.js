@@ -1,8 +1,8 @@
 class GlobalController {
   constructor() {
     this.keyMap = {}
-    window.addEventListener('keydown', this.pressKey)
-    window.addEventListener('keyup', this.unpressKey)
+    window.addEventListener('keydown', this.pressKey.bind(this))
+    window.addEventListener('keyup', this.unpressKey.bind(this))
   }
 
   pressKey(evt) {
@@ -14,11 +14,11 @@ class GlobalController {
   }
 
   destroy() {
-    window.removeEventListener('keydown', this.pressKey)
-    window.removeEventListener('keyup', this.unpressKey)
+    window.removeEventListener('keydown', this.pressKey.bind(this))
+    window.removeEventListener('keyup', this.unpressKey.bind(this))
   }
 }
 
 const globalController = new GlobalController()
 
-export default globalController
+export const { keyMap } = globalController

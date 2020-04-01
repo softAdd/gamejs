@@ -1,4 +1,4 @@
-import globalController from 'game_modules/global-controller'
+import { keyMap } from 'game_modules/global-controller'
 
 class PlayerController {
   constructor(player) {
@@ -6,7 +6,6 @@ class PlayerController {
   }
 
   keyboardMove() {
-    const { keyMap } = globalController
     // W
     if (keyMap['87']) {
       this.playerBody.y -= 3
