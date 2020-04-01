@@ -37,10 +37,6 @@ class MainScreen {
 
       this.container.addChild(gameObject.sprite)
     })
-    // const redRect = new PIXI.Graphics()
-    // redRect.beginFill(0xFF0000)
-    // redRect.drawRect(0, 0, 1000, 1000)
-    // this.container.addChild(redRect)
   }
 
   init() {
