@@ -1,11 +1,13 @@
-import { keyMap } from 'game_modules/global-controller'
+import { globalController } from 'game_modules/global-controller'
 
 class PlayerController {
   constructor(player) {
     this.playerBody = player.sprite
+    globalController.registerReaction(this.keyboardReaction.bind(this))
   }
 
-  keyboardMove() {
+  keyboardReaction() {
+    const { keyMap } = globalController
     // W
     if (keyMap['87']) {
       this.playerBody.y -= 3

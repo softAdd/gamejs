@@ -1,8 +1,7 @@
 class GlobalController {
   constructor() {
     this.keyMap = {}
-    window.addEventListener('keydown', this.pressKey.bind(this))
-    window.addEventListener('keyup', this.unpressKey.bind(this))
+    this.reactions = []
   }
 
   pressKey(evt) {
@@ -13,12 +12,27 @@ class GlobalController {
     this.keyMap[evt.keyCode] = false
   }
 
-  destroy() {
+  registerReaction(reaction) {
+    this.reactions.push(reaction)
+  }
+
+  register() {
+    window.addEventListener('keydown', this.pressKey.bind(this))
+    window.addEventListener('keyup', this.unpressKey.bind(this))
+  }
+
+  unregister() {
     window.removeEventListener('keydown', this.pressKey.bind(this))
     window.removeEventListener('keyup', this.unpressKey.bind(this))
+    this.reactions = []
+    this.keyMap = {}
+  }
+
+  runControllers() {
+    this.reactions.forEach(reaction => {
+      reaction()
+    })
   }
 }
 
-const globalController = new GlobalController()
-
-export const { keyMap } = globalController
+export const globalController = new GlobalController()

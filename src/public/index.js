@@ -5,6 +5,7 @@ import * as PIXI from 'pixi.js'
 window.onload = () => {
   const gameContainer = document.querySelector('#js-gamebox')
   const game = new Game(gameContainer)
+  game.run()
 
   // // player object
   // const player = new PIXI.Sprite.from('assets/32flower.png')

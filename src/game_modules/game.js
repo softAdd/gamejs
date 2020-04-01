@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
 import MainScreen from 'game_modules/screens/main-screen'
+import { globalController } from 'game_modules/global-controller'
 
 class Game {
   constructor(gameContainer) {
@@ -19,7 +20,7 @@ class Game {
   }
 
   gameLoop() {
-    // console.log(timestamp)
+    globalController.runControllers()
   }
 
   create() {
@@ -29,6 +30,9 @@ class Game {
       const screenContainer = this.screens[screenName].container
       this.app.stage.addChild(screenContainer)
     })
+    
+    this.app.ticker.add(this.gameLoop)
+    globalController.register()
   }
 
   run() {
