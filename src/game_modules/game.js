@@ -1,6 +1,7 @@
 import * as PIXI from 'pixi.js'
 import MainScreen from 'game_modules/screens/main-screen'
 import { globalController } from 'game_modules/global-controller'
+import { Camera } from './camera'
 
 class Game {
   constructor(gameContainer) {
@@ -16,11 +17,14 @@ class Game {
     this.screens = {
       main: new MainScreen('main', true)
     }
+    this.currentScreen = this.screens.main.camera
+    this.camera = this.currentScreen?.camera
     this.create()
   }
 
   gameLoop() {
     globalController.runControllers()
+    this.camera?.updateCoords()
   }
 
   create() {

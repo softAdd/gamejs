@@ -1,7 +1,7 @@
 import GameObject from 'game_modules/game-object'
 import PlayerController from 'game_modules/controllers/player-controller'
 
-class Player extends GameObject {
+export class Player extends GameObject {
   constructor(spritePath, x, y) {
     super(x, y)
     this.spritePath = spritePath
@@ -13,5 +13,3 @@ class Player extends GameObject {
     this.playerController = new PlayerController(this)
   }
 }
-
-export default Player

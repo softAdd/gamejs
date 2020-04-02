@@ -1,5 +1,6 @@
 import * as PIXI from 'pixi.js'
-import Player from 'game_modules/units/player'
+import { Player } from 'game_modules/units/player'
+import { Camera } from 'game_modules/camera'
 
 class MainScreen {
   constructor(name, isVisible = false) {
@@ -12,6 +13,7 @@ class MainScreen {
     if (isVisible) {
       this.init()
     }
+    this.camera = new Camera(400, 400, 1200, 1200)
   }
 
   configContainer(name, isVisible) {
