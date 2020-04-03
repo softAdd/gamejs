@@ -1,9 +1,11 @@
+import * as PIXI from 'pixi.js'
+
 export class Camera {
-    constructor(width, height, screenX, screenY, scrollEdge = 200) {
+    constructor(width, height, limitX, limitY, scrollEdge = 200) {
         this.width = width
         this.height = height
-        this.screenX = screenX
-        this.screenY = screenY
+        this.limitX = limitX
+        this.limitY = limitY
         this.scrollEdge = scrollEdge
         this.x = 0
         this.y = 0

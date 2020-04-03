@@ -1,30 +1,27 @@
 import * as PIXI from 'pixi.js'
 import MainScreen from 'game_modules/screens/main-screen'
 import { globalController } from 'game_modules/global-controller'
-import { Camera } from './camera'
 
 class Game {
   constructor(gameContainer) {
     this.gameContainer = gameContainer
     this.app = new PIXI.Application(
       {
-        width: gameContainer.offsetWidth,
-        height: gameContainer.clientHeight,
-        resizeTo: gameContainer,
-        transparent: true
+        width: gameContainer.offsetWidth - 100,
+        height: gameContainer.clientHeight - 100,
+        // resizeTo: gameContainer,
+        // transparent: true
+        backgroundColor: 0x103322
       }
     )
     this.screens = {
       main: new MainScreen('main', true)
     }
-    this.currentScreen = this.screens.main.camera
-    this.camera = this.currentScreen?.camera
     this.create()
-  }
 
-  gameLoop() {
-    globalController.runControllers()
-    this.camera?.updateCoords()
+    this.gameLoop = () => {
+      globalController.runControllers()
+    }
   }
 
   create() {
@@ -34,9 +31,10 @@ class Game {
       const screenContainer = this.screens[screenName].container
       this.app.stage.addChild(screenContainer)
     })
-    
-    this.app.ticker.add(this.gameLoop)
+
     globalController.register()
+    this.app.ticker.add(() => this.gameLoop())
+    console.log(this.app)
   }
 
   run() {

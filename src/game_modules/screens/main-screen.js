@@ -1,6 +1,6 @@
 import * as PIXI from 'pixi.js'
 import { Player } from 'game_modules/units/player'
-import { Camera } from 'game_modules/camera'
+import { GameObject } from 'game_modules/game-object'
 
 class MainScreen {
   constructor(name, isVisible = false) {
@@ -8,18 +8,19 @@ class MainScreen {
     this.configContainer(name, isVisible)
     this.loader = new PIXI.Loader()
     this.sprites = {
-      'player': new Player('assets/sprites/32barrel.png', 10, 10)
+      'player': new Player('assets/sprites/32rock.png', 20, 20),
+      'tree': new GameObject('assets/sprites/96tree.png', 60, 60)
     }
     if (isVisible) {
       this.init()
     }
-    this.camera = new Camera(400, 400, 1200, 1200)
   }
 
   configContainer(name, isVisible) {
-    this.container.name = name
-    this.container.visible = isVisible
-    this.container.interactive = true
+    const { container } = this
+    container.name = name
+    container.visible = isVisible
+    container.interactive = true
   }
 
   createLoadingQueue() {

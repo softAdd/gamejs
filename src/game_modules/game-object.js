@@ -1,7 +1,8 @@
 import * as PIXI from 'pixi.js'
 
-class GameObject {
-  constructor(x, y, anchor = 0.5) {
+export class GameObject {
+  constructor(spritePath, x, y, anchor = 0.5) {
+    this.spritePath = spritePath
     this.texture = null
     this.sprite = null
     this.x = x
@@ -17,5 +18,3 @@ class GameObject {
     this.sprite.anchor.set(this.anchor)
   }
 }
-
-export default GameObject
