@@ -24,6 +24,7 @@ class PlayerController {
     if (keyMap['65']) {
       this.playerBody.x -= 3
     }
+    
   }
 }
 

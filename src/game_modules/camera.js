@@ -1,42 +1,31 @@
 import * as PIXI from 'pixi.js'
 
+// https://jsfiddle.net/0o2nsc18/
+// http://jsfiddle.net/gfcarv/QKgHs/
 export class Camera {
-    constructor(width, height, limitX, limitY, scrollEdge = 200) {
-        this.width = width
-        this.height = height
-        this.limitX = limitX
-        this.limitY = limitY
-        this.scrollEdge = scrollEdge
-        this.x = 0
-        this.y = 0
-        this.isFollow = false
-        this.followingGameObject = null
+    constructor(app, currentScreen) {
+        this.app = app
+        this.currentScreen = currentScreen
+        this.followed = null
+
+        window.addEventListener('click', () => {
+            console.log(this)
+            const xView = this.app.stage.x + 5
+            const yView = this.app.stage.y + 5
+            this.updateCameraPosition(xView, yView)
+        })
     }
 
-    followGameObject(sprite) {
-        this.isFollow = true
-        this.followGameObject = sprite
+    updateCameraPosition(xView, yView) {
+        this.app.stage.x = xView
+        this.app.stage.y = yView
     }
 
-    updateCoords() {
-        if (!this.isFollow) {
-            return
-        }
+    setFollowing(sprite) {
+        this.followed = sprite
+    }
 
-        if(this.followingGameObject.x > (this.x + this.width - this.scrollEdge)) {
-            this.x = Math.min(this.limitX, this.followingGameObject.x - this.width + this.scrollEdge);
-        }
-
-        if(this.followingGameObject.x < (this.x + this.scrollEdge)) {
-            this.x = Math.max(0, this.followingGameObject.x - this.scrollEdge);
-        }
-
-        if(this.followingGameObject.y > (this.y + this.height - this.scrollEdge)) {
-            this.y = Math.min(this.limitY, this.followingGameObject.y - this.height + this.scrollEdge);
-        }
-
-        if(this.followingGameObject.y < (this.y + this.scrollEdge)) {
-            this.y = Math.max(0, this.followingGameObject.y - this.scrollEdge);
-        }
+    setStatic() {
+        this.followed = null
     }
 }
