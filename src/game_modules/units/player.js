@@ -2,8 +2,8 @@ import { GameObject } from 'game_modules/game-object'
 import PlayerController from 'game_modules/controllers/player-controller'
 
 export class Player extends GameObject {
-  constructor(spritePath, x, y) {
-    super(spritePath, x, y)
+  constructor(spritePath, initialX, initialY) {
+    super(spritePath, initialX, initialY)
     this.playerController = null
   }
 

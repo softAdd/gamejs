@@ -23,6 +23,10 @@ class Game {
 
     this.gameLoop = () => {
       globalController.runControllers()
+
+      if (this.camera.followed) {
+        this.camera.updateFollowingCamera()
+      }
     }
   }
 

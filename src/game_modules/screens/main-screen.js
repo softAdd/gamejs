@@ -34,7 +34,7 @@ class MainScreen {
       const currentTexture = this.loader.resources[resourseName].texture
 
       if (resourseName === 'player') {
-        this.camera.setFollowing(currentTexture)
+        this.camera.setFollowing(gameObject)
       }
 
       gameObject.create(currentTexture)

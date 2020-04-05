@@ -1,20 +1,20 @@
 import * as PIXI from 'pixi.js'
 
 export class GameObject {
-  constructor(spritePath, x, y, anchor = 0.5) {
+  constructor(spritePath, initialX, initialY, initialAnchor = 0.5) {
     this.spritePath = spritePath
     this.texture = null
     this.sprite = null
-    this.x = x
-    this.y = y
-    this.anchor = anchor
+    this.initialX = initialX
+    this.initialY = initialY
+    this.initialAnchor = initialAnchor
   }
 
   create(texture) {
     this.texture = texture
     this.sprite = new PIXI.Sprite.from(texture)
-    this.sprite.x = this.x
-    this.sprite.y = this.y
-    this.sprite.anchor.set(this.anchor)
+    this.sprite.x = this.initialX
+    this.sprite.y = this.initialY
+    this.sprite.anchor.set(this.initialAnchor)
   }
 }

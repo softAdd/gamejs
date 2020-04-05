@@ -1,24 +1,18 @@
-import * as PIXI from 'pixi.js'
-
-// https://jsfiddle.net/0o2nsc18/
-// http://jsfiddle.net/gfcarv/QKgHs/
 export class Camera {
     constructor(app, currentScreen) {
         this.app = app
         this.currentScreen = currentScreen
         this.followed = null
-
-        window.addEventListener('click', () => {
-            console.log(this)
-            const xView = this.app.stage.x + 5
-            const yView = this.app.stage.y + 5
-            this.updateCameraPosition(xView, yView)
-        })
+        
+        this.cachedCameraPosition = {
+            x: 0,
+            y: 0
+        }
     }
 
-    updateCameraPosition(xView, yView) {
-        this.app.stage.x = xView
-        this.app.stage.y = yView
+    setCameraPosition(x, y) {
+        this.app.stage.x = x
+        this.app.stage.y = y
     }
 
     setFollowing(sprite) {
@@ -27,5 +21,18 @@ export class Camera {
 
     setStatic() {
         this.followed = null
+    }
+
+    updateFollowingCamera() {
+        if (!this.followed) {
+            return
+        }
+
+        const updatedPositionX = (this.app.view.width / 2 - this.followed.sprite.width / 2) - (this.followed.sprite.x - this.followed.sprite.width / 2)
+        const updatedPositionY = (this.app.view.height / 2 - this.followed.sprite.height / 2) - (this.followed.sprite.y - this.followed.sprite.height / 2)
+
+        if (updatedPositionX !== this.cachedCameraPosition.x || updatedPositionY !== this.cachedCameraPosition.y) {
+            this.setCameraPosition(updatedPositionX, updatedPositionY)
+        }
     }
 }
