@@ -8,7 +8,7 @@ class MainScreen {
     this.configContainer(name)
     this.loader = new PIXI.Loader()
     this.sprites = {
-      'player': new Player('assets/sprites/32rock.png', 20, 20),
+      'player': new Player('assets/player/StandIn_Swordsman_v01.png'),
       'tree': new GameObject('assets/sprites/96tree.png', 90, 90)
     }
     this.camera = null
