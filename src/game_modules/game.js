@@ -8,11 +8,10 @@ class Game {
     this.gameContainer = gameContainer
     this.app = new PIXI.Application(
       {
-        width: gameContainer.offsetWidth - 100,
-        height: gameContainer.clientHeight - 100,
-        // resizeTo: gameContainer,
-        // transparent: true
-        backgroundColor: 0x133212
+        width: gameContainer.offsetWidth,
+        height: gameContainer.clientHeight,
+        resizeTo: gameContainer,
+        transparent: true
       }
     )
     this.screens = {

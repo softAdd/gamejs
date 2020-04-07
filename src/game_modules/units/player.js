@@ -8,7 +8,7 @@ export class Player extends GameObject {
   }
 
   create(texture) {
-    super.create(texture)
+    super.createAnimated(texture)
     this.playerController = new PlayerController(this)
   }
 }
