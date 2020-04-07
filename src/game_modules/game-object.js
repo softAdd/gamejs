@@ -24,10 +24,9 @@ export class GameObject {
     this.texture = texture
     this.sprite = new PIXI.AnimatedSprite(defaultSprite)
     this.sprite.animationSpeed = 0.5
-    this.sprite.loop = true
+    this.sprite.loop = false
     this.sprite.x = this.initialX
     this.sprite.y = this.initialY
     this.sprite.anchor.set(this.initialAnchor)
-    this.sprite.play()
   }
 }

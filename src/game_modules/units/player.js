@@ -6,11 +6,12 @@ export class Player extends GameObject {
   constructor(spritePath, initialX = 0, initialY = 0) {
     super(spritePath, initialX, initialY)
     this.playerController = null
+    this.spriteSheet = null
   }
 
   create(texture) {
-    const spriteSheet = createPlayerSheet(texture.baseTexture)
-    super.createAnimated(texture, spriteSheet.stateList['up_waiting'])
+    this.spriteSheet = createPlayerSheet(texture.baseTexture)
+    super.createAnimated(texture, this.spriteSheet.stateList['default'])
     this.playerController = new PlayerController(this)
   }
 }
