@@ -15,9 +15,10 @@ class PlayerController {
     const { keyMap } = globalController
     
     if (!Object.keys(keyMap).some(key => keyMap[key] === true)) {
-      this.playerBody.stop()
       this.cachedMovement = [0, 0, 0, 0]
       this.playerBody.textures = this.animationsList['default']
+      this.playerBody.stop()
+      this.playerBody.play()
     }
     
     // W
